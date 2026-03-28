@@ -1,77 +1,70 @@
-A user-friendly, agent-based vulnerability scanning and reporting tool designed to automate security audits for IT auditors and cybersecurity professionals.
+# Getting Started with Create React App
 
-📌 Project Overview
-The Basic Security Test Application or IT Auditor Helping Application is built to assist IT auditors in performing system and network vulnerability assessments with minimal technical overhead. With a ReactJS frontend and a FastAPI Python backend, it offers an efficient, intuitive interface and generates PDF audit reports.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-🧰 Tech Stack
-Frontend: ReactJS
-Backend: Python (FastAPI)
-Database: PostgreSQL
+## Available Scripts
 
-🚀 Features
-🔍 Automated vulnerability scanning (system and network)
-🧠 Minimal training required – user-friendly CLI and web UI
-📄 Auto-generated PDF audit reports with mitigation suggestions
-📡 Includes WPA/WPA2 wireless security testing
-💾 Saves .JSON and .PDF reports locally
-📊 Real-time scan logging
-🌐 REST API and CLI agent integration
+In the project directory, you can run:
 
-User Guide
-1. installed (on macOS via Homebrew):
-• brew install python@3.11
-• node postgresql nmap tcpdump bind
-• brew services start postgresql
+### `npm start`
 
-2. Project Setup
-• Unzip and enter the project directory
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-3. Database setup
-• Create PostgreSQL role and database
-• Apply the database schema
-• Set up environment configuration
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-4. Start the Backend API
-• Go to backend app directory.
-• Create a python virtual environment named. venv in the current directory.
-• Activate the virtual environment. Command - source .venv/bin/activate
-• Upgrade the pip installer.
-• Install the required backend libraries. Command use- pip install fastapi uvicorn databases[postgresql] sqlalchemy asyncpg python-dotenv reportla
+### `npm test`
 
-5. Launch the API Server
-• uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-6. Start the front-end
-• Go to the front-end directory
-• Install npm
-• Start npm
+### `npm run build`
 
-7. Register Account
-• Register as you are IT Auditor. Fill the required details about your IT Auditor’s details. After autogenerate an auditor’s code.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-8. Then Go to the terminal, Install & Run the CLI Agent
-cd ../agent
-python3 -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip
-pip install click requests rich reportlab psutil
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-9. In the agent terminal run this command,
-python cli.py \
---auditor-code “ ” \
---server-url http://localhost:8000 \
---client-company “ ” \
---it-manager “ ”
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-10. Then go to the login page. Enter the auditor’s code given. Then, view the audit report or download a
-report as a .pdf.
+### `npm run eject`
 
-Future Enhancements
-Cloud deployment (AWS integration)
-Real-time alerts and notifications
-Graph-based report visualizations
-Advanced authentication and RBAC
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-🧑‍💻 Author
-Pasidu Adithya Liyanage
-BSc(Hons) Computer Security, University of Plymouth
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

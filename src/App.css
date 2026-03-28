@@ -1,0 +1,92 @@
+/* Simple styling */
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f5f5f5;
+}
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain; /* Ensures full video is visible */
+  z-index: -1;
+  background: black; /* Optional: fill gaps with black */
+}
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgb(255, 255, 255);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: rgba(1, 1, 1, 0.3); /* translucent dark */
+  color: #ffffff; /* adjust text color for contrast */
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab {
+  cursor: pointer;
+}
+
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  color: rgb(251, 251, 251);
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.btn-register {
+  background-color: #24ac44;
+}
+
+.btn-login {
+  background-color: #007bff;
+}
+
+.error {
+  color: rgb(208, 59, 59);
+  margin-top: 8px;
+}
+
+.success {
+  color: rgb(188, 66, 26);
+  margin-top: 8px;
+}
+
+.report-list {
+  list-style: none;
+  padding: 0;
+}
+
+.report-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #902020;
+}
+
+
