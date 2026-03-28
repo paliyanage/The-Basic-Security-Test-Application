@@ -1,0 +1,137 @@
+# Auditor Toolkit
+
+This repository contains three components for running security audits:
+
+1. **CLI Agent** (in `agent/`): Runs checks on a Mac/Linux system and generates logs, JSON, and PDF outputs.
+2. **Backend API** (in `backend/app/`): A FastAPI service with PostgreSQL to register auditors, store report metadata, and serve logs/PDFs.
+3. **Frontend UI** (in `frontend/`): A React app for auditor registration, login, and viewing/downloading audit reports.
+
+---
+
+## Prerequisites
+
+On macOS, install via Homebrew:
+
+```bash
+brew install python@3.11 node postgresql nmap tcpdump bind
+brew services start postgresql
+```
+
+This provides:
+
+* Python 3.11+
+* Node 16+ and npm
+* PostgreSQL database
+* `nmap`, `tcpdump`, `dig` (via `bind`) for network scans
+
+---
+
+## 1. Project Setup
+
+Unzip your project archive and `cd` into the root directory:
+
+```bash
+unzip auditor-project.zip
+cd auditor-project
+```
+
+---
+
+## 2. Database Initialization
+
+1. Create a Postgres role and database:
+
+   ```bash
+   createuser -s audit_admin
+   psql -c "ALTER USER audit_admin WITH PASSWORD 'secret123';"
+   createdb -O audit_admin auditdb
+   ```
+2. Apply the schema:
+
+   ```bash
+   psql -U audit_admin -d auditdb -f create_schema.sql
+   ```
+3. Create a `.env` in `backend/app/`:
+
+   ```ini
+   DATABASE_URL=postgresql://audit_admin:secret123@localhost:5432/auditdb
+   ```
+
+---
+
+## 3. Start the Backend API
+
+```bash
+cd backend/app #0 
+python3 -m venv .venv
+source .venv/bin/activate # 1st activate backend env
+pip install --upgrade pip
+pip install fastapi uvicorn databases[postgresql] sqlalchemy asyncpg python-dotenv reportlab
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000 #2nd up backend
+```
+
+* **Health check:** `curl http://localhost:8000/health`
+* **API URL base:** `http://localhost:8000`
+
+---
+
+## 4. Start the Frontend UI
+
+```bash
+cd ../../frontend #1st
+npm install 
+npm start # 2nd
+```
+
+* **Dev server:** `http://localhost:3000`
+* **API endpoint:** Configured via `.env` → `REACT_APP_API_URL=http://localhost:8000`
+
+---
+
+## 5. Install & Run the CLI Agent
+
+```bash
+cd ../agent #1st 
+python3 -m venv .venv
+source .venv/bin/activate #2nd
+pip install --upgrade pip
+pip install click requests rich reportlab psutil
+```
+
+Run an audit:
+
+```bash
+python cli.py \
+  --auditor-code 11725025 \
+  --server-url http://localhost:8000 \
+  --client-company "LB Finance" \
+  --it-manager "Tharaka"
+```
+
+This will:
+
+* Validate your auditor code
+* Run 40+ checks (CPU, memory, network, system, etc.)
+* Save a log file locally
+* Send **only** the log file path to the backend
+* Generate JSON and PDF copies locally
+
+---
+
+## 6. Usage
+
+* **Register an auditor** via the React UI or:
+
+  ```bash
+  curl -X POST http://localhost:8000/register \
+    -H "Content-Type: application/json" \
+    -d '{"name":"Alice","email":"alice@example.com","team":"Security","team_manager":"Bob"}'
+  ```
+* **Login** with your `auditor_code` to view/download reports and raw logs.
+* **Download raw logs**: `GET /reports/{report_id}/log`
+* **Download PDF**: `GET /reports/{report_id}/pdf`
+
+#uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+---
+
+Enjoy secure, automated audits! 🚀
